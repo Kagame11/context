@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import Heading from './Heading.js';
+import Section from './Section.js';
 
-function App() {
+export default function ProfilePage() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Section>
+      <Heading>My Profile</Heading>
+      <post 
+      title="Hello traveller!"
+      body="Read about my adventures."
+      />
+      <AllPosts />
+      </Section>
+
+
+        );
+}
+
+function AllPosts(){
+  return (
+    <section>
+      <Heading>Posts</Heading>
+      <RecentPosts/>
+    </section>
   );
 }
 
-export default App;
+function RecentPosts(){
+  return (
+    <Section>
+      <Heading>Recent Posts</Heading>
+      <Post
+      title="Flavors of Lisbon"
+      body="...those pasteis de nata!"
+      />
+      <Post
+      title="Buenos aires in the rythm of the tango"
+      body="I loved it!"
+      />
+    </Section>
+  );
+}
+
+function Post({title, body}) {
+  return (
+    <Section isFancy={true}>
+      <Heading>
+        {title}
+      </Heading>
+      <p><i>{body}</i></p>
+    </Section>
+  );
+}
